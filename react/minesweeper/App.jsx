@@ -1,5 +1,7 @@
-function Welcome(props) {
-  return <h1>Hello, Name</h1>;
+import React from 'react';
+
+function App(props) {
+  return <h1>Hello, {props.name}</h1>;
 }
 
-export default Welcome;
+export default App;

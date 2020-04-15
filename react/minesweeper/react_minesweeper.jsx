@@ -1,10 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import App from './App';
+
 function Root(props) {
   return (
     <div>
       Hello
+      <App name="David" />
     </div>
   );
 }
