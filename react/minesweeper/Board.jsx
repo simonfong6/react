@@ -26,7 +26,9 @@ class Board extends React.Component {
           });
 
           return (
-            <div key={rowIndex.toString()}>
+            <div
+              className="row"
+              key={rowIndex.toString()}>
               {rowElements}
             </div>
           );
