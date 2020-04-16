@@ -9,7 +9,8 @@ class Tile extends React.Component {
 
     let explored = "";
 
-    if (this.props.explored) {
+    console.log("tile con");
+    if (this.props.tile.explored) {
       explored = "explored";
     }
 
@@ -23,7 +24,13 @@ class Tile extends React.Component {
     let tileState = " ";
 
     if (this.props.tile.explored) {
-      tileState = " ";
+      const bombCount = this.props.tile.adjacentBombCount();
+      if (bombCount == 0){
+        tileState = " ";
+      } else {
+        tileState = bombCount.toString();
+      }
+      
     }
 
     if (this.props.tile.bombed) {
@@ -38,11 +45,62 @@ class Tile extends React.Component {
     
   }
 
+  tileState(tile) {
+    let tileState = " ";
+
+    if (tile.explored) {
+      const bombCount = tile.adjacentBombCount();
+      if (bombCount == 0){
+        tileState = " ";
+      } else {
+        tileState = bombCount.toString();
+      }
+      
+    }
+
+    if (tile.bombed && tile.explored) {
+      tileState = "💣";
+    }
+
+    if (tile.flagged) {
+      tileState = "🚩";
+    }
+
+    return tileState
+  }
+
+  isExplored(tile) {
+    let explored = "";
+
+    if (tile.explored) {
+      explored = "explored";
+    }
+    return explored;
+  }
+
+  handleClick(event) {
+    console.log("Click");
+
+    let flag = false;
+    const tile = this.props.tile;
+
+    if(event.altKey) {
+      flag = true;
+      console.log("Flag");
+    }
+
+    this.props.updateGame(tile, flag);
+    
+  }
+
   render() {
     return (
-      <div className="tile {this.state.explored}">
+      <div
+        className={"tile " + this.isExplored(this.props.tile)}
+        onClick={this.handleClick.bind(this)}
+      >
         {
-          this.state.tileState
+          this.tileState(this.props.tile)
         }
       </div>
     );

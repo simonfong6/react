@@ -48,6 +48,7 @@ export class Tile {
   }
 
   toggleFlag() {
+    console.log("Inside toggle Flag");
     if (!this.explored) {
       this.flagged = !this.flagged;
       return true;

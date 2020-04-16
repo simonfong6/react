@@ -7,7 +7,7 @@ class Board extends React.Component {
   constructor(props) {
     super(props);
 
-    this.updateGame = props.updateGame.bind(this);
+    this.updateGame = props.updateGame;
   }
 
   render() {
@@ -20,7 +20,7 @@ class Board extends React.Component {
               <Tile
                 key={colIndex.toString()}
                 tile={tile}
-                updateGame={this.updateGame}
+                updateGame={this.props.updateGame}
               />
             );
           });
