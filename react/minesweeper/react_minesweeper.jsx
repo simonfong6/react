@@ -7,7 +7,7 @@ import Game from './Game';
 function Root(props) {
   return (
     <div>
-      <App name="David" />
+      <App name="Jenn ♥️" />
       <Game />
     </div>
   );
