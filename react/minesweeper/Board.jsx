@@ -33,6 +33,10 @@ class Board extends React.Component {
             </div>
           );
         })}
+
+        <button onClick={this.props.restartGame}>
+          Restart Game
+        </button>
       </div>
     );
   }
